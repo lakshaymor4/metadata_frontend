@@ -1,17 +1,51 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import  ReactDOM  from "react-dom/client";
+import Hom from "./pages/home";
+import CRUD from "./pages/crud";
+import Create from "./pages/create";
+import Update from "./pages/update";
+import Delete from "./pages/delete";
+import Read from "./pages/read";
+import Cross from "./pages/crosswalk";
+import "./index.css"
+import {
+    createBrowserRouter,
+    RouterProvider,
+    Route,
+    Navigate,
+} from "react-router-dom";
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Hom />,
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    },
+    {
+        path:"/crud",
+        element:<CRUD />
+    },
+    {
+        path:"/crud/create",
+        element:<Create />
+    },
+    {
+        path:"/crud/update",
+        element:<Update />
+    },
+     {
+        path:"/crud/delete",
+        element:<Delete />
+    },
+    {
+        path:"/crud/read",
+        element:<Read />
+    },
+    {
+        path:"/cross",
+        element:<Cross />
+    }
+
+])
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={router} />);
