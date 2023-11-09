@@ -2,10 +2,11 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 
-const Delete = () => {
+const Updatecross = () => {
   const [keyy, setKeyy] = useState("");
   const [valuee, setValuee] = useState("");
   const [categ, setCateg] = useState("");
+  const [user, setUser] = useState("");
   const hg = (e) => {
     setCateg(e.target.value);
   };
@@ -13,26 +14,34 @@ const Delete = () => {
     console.log(categ);
     console.log(keyy);
     console.log(valuee);
-    const ur = "http://localhost:8080/api/delete/" + keyy;
-    console.log(ur);
+    const ur = "http://localhost:8080/source/" + user + "/metadata/" + categ;
     const con = {
-      method: "delete",
+      method: "put",
       url: ur,
+      data: {
+        category: categ,
+        keyy: keyy,
+        value: valuee,
+      },
     };
     axios(con)
-      .then((resu) => console.log(resu))
+      .then((resu) => console.log(resu.data.tok))
       .catch((reu) => console.log(reu));
   };
   const handl = (e) => {
     setKeyy(e.target.value);
   };
-
+  const hng = (e) => {
+    setUser(e.target.value);
+  };
   const handle = (e) => {
     setValuee(e.target.value);
   };
   return (
-    <div className="del-co">
-      <h1>Delete</h1>
+    <div className="up-co">
+      <h1>Update</h1>
+      <h1 className="header">Username</h1>
+      <input type="text" onChange={hng} />
       <h1>Category</h1>
       <select onChange={hg}>
         <option value="">Choose</option>
@@ -41,11 +50,12 @@ const Delete = () => {
       </select>
       <label for="key">Key</label>
       <input name="key" onChange={handl} />
-
+      <label for="value">Value</label>
+      <input name="value" onChange={handle} />
       <button type="submit" onClick={hand}>
         Submit
       </button>
     </div>
   );
 };
-export default Delete;
+export default Updatecross;

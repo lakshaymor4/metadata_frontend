@@ -12,7 +12,7 @@ const Hom = () => {
   };
   return (
     <>
-      <h1>MENU</h1>
+      <h1>Metadata Management</h1>
       <div className="ho-co">
         <select onChange={hand}>
           <option value="">Choose</option>
